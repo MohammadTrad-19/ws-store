@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stock By Size - WS Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page" onload="loadAdminStockPage()">
+
+  <header class="admin-navbar">
+
+    <div class="admin-logo-box">
+      <img src="images/ws logo.png" alt="WS Store Logo" class="admin-logo">
+    </div>
+
+    <nav class="admin-nav-links">
+
+      <button onclick="window.location.href='admin.html'">
+        Dashboard
+      </button>
+
+      <button onclick="window.location.href='admin-products.html'">
+        Manage Products
+      </button>
+
+      <button onclick="window.location.href='admin-orders.html'">
+        View Orders
+      </button>
+      
+       <button onclick="window.location.href='admin-stock.html'">
+        Stock By Size
+      </button>
+
+      <button onclick="window.location.href='admin-contact.html'">
+        Contact Messages
+      </button>
+
+      <button onclick="window.location.href='admin-reviews.html'">
+        Customer Reviews
+      </button>
+      <button onclick="window.location.href='admin-chatbot.html'">Chatbot Messages</button>
+
+      <button class="admin-nav-logout" onclick="logoutAdmin()">
+        Logout
+      </button>
+
+    </nav>
+
+  </header>
+
+  <section class="admin-content-section">
+
+    <h1 class="admin-section-title">
+      Stock By Size
+    </h1>
+
+    <div class="admin-stock-controls">
+
+      <input 
+        type="text" 
+        id="stockSearchInput" 
+        placeholder="Search product, brand, category, size..."
+        oninput="filterAdminStockTable()">
+
+      <select id="stockCategoryFilter" onchange="filterAdminStockTable()">
+        <option value="" selected>All Categories</option>
+        <option value="Football">Football</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Running">Running</option>
+        <option value="Gym">Gym</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Volleyball">Volleyball</option>
+      </select>
+
+      <select id="stockKitFilter" onchange="filterAdminStockTable()">
+        <option value="" selected>All Kit Types</option>
+        <option value="home">Home</option>
+        <option value="away">Away</option>
+        <option value="third">Third</option>
+      </select>
+
+      <select id="stockQuantityFilter" onchange="filterAdminStockTable()">
+        <option value="" selected>All Stock</option>
+        <option value="low">Low Stock (≤5)</option>
+      </select>
+
+    </div>
+
+    <div id="adminStockContainer" class="admin-stock-grid"></div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

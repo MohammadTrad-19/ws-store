@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - WS Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="admin-page">
+
+  <header class="admin-navbar">
+    <div class="admin-logo-box">
+      <img src="images/ws logo.png" alt="WS Store Logo" class="admin-logo">
+    </div>
+
+    <nav class="admin-nav-links">
+      <button onclick="hideAdminWelcome(); showDashboard()">Dashboard</button>
+      <button onclick="window.location.href='admin-products.html'">Manage Products</button>
+      <button onclick="window.location.href='admin-orders.html'">View Orders</button>
+      <button onclick="window.location.href='admin-stock.html'">Stock By Size</button>
+      <button onclick="window.location.href='admin-contact.html'">Contact Messages</button>
+      <button onclick="window.location.href='admin-reviews.html'">Customer Reviews</button>
+      <button onclick="window.location.href='admin-chatbot.html'">Chatbot Messages</button>
+      <button class="admin-nav-logout" onclick="logoutAdmin()">Logout</button>
+    </nav>
+  </header>
+
+  <section id="adminWelcomeSection" class="admin-welcome-section">
+    <h1>Welcome to WS Store Admin Panel</h1>
+    <p>
+      Manage products, customer orders, contact messages, reviews,
+      and dashboard statistics from one professional control panel.
+    </p>
+  </section>
+
+  <div id="dashboardSection" class="dashboard-stats" style="display: none;">
+    <div class="stat-card">
+      <h3>Total Products</h3>
+      <p id="totalProducts">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Orders</h3>
+      <p id="totalOrders">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Messages</h3>
+      <p id="totalMessages">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Customers</h3>
+      <p id="totalCustomers">0</p>
+    </div>
+  </div>
+
+  <div id="dashboardCharts" class="dashboard-charts" style="display: none;">
+    <div class="dashboard-filter-wrapper">
+      <button class="dashboard-filter-main" onclick="toggleDashboardFilter()">Filter Charts</button>
+
+      <div id="dashboardFilterOptions" class="dashboard-filter-options">
+        <button onclick="loadDashboardStats('day')">Per Day</button>
+        <button onclick="loadDashboardStats('week')">Per Week</button>
+        <button onclick="loadDashboardStats('month')">Per Month</button>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3 id="productsSoldChartTitle">Products Sold Per Day</h3>
+      <canvas id="productsSoldChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3 id="revenueChartTitle">Revenue Per Day</h3>
+      <canvas id="revenueChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Top Selling Products</h3>
+      <canvas id="topProductsChart"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

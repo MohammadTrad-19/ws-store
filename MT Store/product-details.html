@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - WS Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="home.html#about">About</a></li>
+                <li><a href="home.html#contact">Contact</a></li>
+                <li><a href="products.html" onclick="clearProductFilters()">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+
+                <li class="cart-icon">
+                    <a href="wishlist.html">
+                        ♥ <span id="wishlistCount">0</span>
+                    </a>
+                </li>
+
+                <li class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cartCount">0</span>
+                    </a>
+                </li>
+
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="back-link-wrapper">
+        <a href="products.html" class="back-link">← Back to Products</a>
+    </div>
+
+    <section class="product-details-page">
+        <div class="product-details-container">
+
+            <div class="product-details-image">
+                <img id="detailImage" src="" alt="Product Image">
+            </div>
+
+            <div class="product-details-info">
+                <h1 id="detailName">Product Name</h1>
+                <p class="detail-price" id="detailPrice">$0</p>
+                <p id="detailStock"></p>
+                <p id="detailDescription">Product description goes here.</p>
+                <div id="averageRatingBox" class="average-rating-box"></div>
+
+                <!-- SHOE SIZES: MOVED HERE ONLY -->
+                <div class="product-sizes" id="sizesContainer" style="display: none;">
+                    <h3>Select Size</h3>
+
+                    <div class="sizes-list">
+                        <button class="size-btn" onclick="selectSize('36', this)">36</button>
+                        <button class="size-btn" onclick="selectSize('37', this)">37</button>
+                        <button class="size-btn" onclick="selectSize('38', this)">38</button>
+                        <button class="size-btn" onclick="selectSize('39', this)">39</button>
+                        <button class="size-btn" onclick="selectSize('40', this)">40</button>
+                        <button class="size-btn" onclick="selectSize('41', this)">41</button>
+                        <button class="size-btn" onclick="selectSize('42', this)">42</button>
+                        <button class="size-btn" onclick="selectSize('43', this)">43</button>
+                        <button class="size-btn" onclick="selectSize('44', this)">44</button>
+                        <button class="size-btn" onclick="selectSize('45', this)">45</button>
+                    </div>
+                </div>
+
+                <!-- KIT TYPE: HOME / AWAY / THIRD -->
+                <div class="kit-variant-box" id="kitVariantBox" style="display: none;">
+                    <h3>Select Kit Type</h3>
+                    <div class="kit-variant-list">
+                        <button class="kit-variant-btn active" type="button" onclick="selectKitVariant('home', this)">Home</button>
+                        <button class="kit-variant-btn" type="button" onclick="selectKitVariant('away', this)">Away</button>
+                        <button class="kit-variant-btn" type="button" onclick="selectKitVariant('third', this)">Third</button>
+                    </div>
+                </div>
+
+                <!-- KIT OPTION: FULL KIT / T-SHIRT ONLY -->
+                <div class="kit-option-box" id="kitOptionBox" style="display: none;">
+                    <h3>Select Option</h3>
+                    <div class="kit-option-list">
+                        <button class="kit-option-btn active" type="button" onclick="selectKitOption('full-kit', this)">Full Kit</button>
+                        <button class="kit-option-btn" type="button" onclick="selectKitOption('tshirt-only', this)">T-Shirt Only</button>
+                    </div>
+                </div>
+
+                <!-- CLOTHING SIZES FOR KITS -->
+                <div class="product-sizes clothing-sizes" id="clothingSizesContainer" style="display: none;">
+                    <h3>Select Size</h3>
+                    <div class="sizes-list">
+                        <button class="size-btn" type="button" onclick="selectClothingSize('S', this)">S</button>
+                        <button class="size-btn" type="button" onclick="selectClothingSize('M', this)">M</button>
+                        <button class="size-btn" type="button" onclick="selectClothingSize('L', this)">L</button>
+                        <button class="size-btn" type="button" onclick="selectClothingSize('XL', this)">XL</button>
+                        <button class="size-btn" type="button" onclick="selectClothingSize('2XL', this)">2XL</button>
+                        <button class="size-btn" type="button" onclick="selectClothingSize('3XL', this)">3XL</button>
+                    </div>
+                </div>
+
+                <!-- CUSTOMIZE KIT -->
+                <div class="customize-box" id="customizeBox" style="display: none;">
+                    <button class="customize-btn" type="button" onclick="toggleCustomizeFields()">Customize</button>
+
+                    <div class="customize-fields" id="customizeFields" style="display: none;">
+                        <input type="text" id="customName" placeholder="Enter your name">
+                        <input type="number" id="customNumber" placeholder="Enter your number (optional)">
+                        <small class="custom-note">If you customize, name is required. Number is optional.</small>
+                    </div>
+                </div>
+
+                <div class="detail-quantity-box">
+                    <button type="button" onclick="decreaseDetailQuantity()">-</button>
+                    <span id="detailQuantity">1</span>
+                    <button type="button" onclick="increaseDetailQuantity()">+</button>
+                </div>
+
+                <button class="cart-btn" id="detailCartBtn" type="button">Add to Cart</button>
+                <button class="wishlist-btn-details" id="detailWishBtn" type="button">♡ Save</button>
+
+                <div id="detailMessage" class="detail-message"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="reviews-section">
+    <h2>Customer Feedback</h2>
+
+    <div class="review-form">
+
+        <div class="locked-review-name">
+            <span class="user-icon">👤</span>
+            <span id="reviewNameText">Customer Name</span>
+            <span class="locked-text">🔒 Name cannot be changed</span>
+        </div>
+
+        <!-- STAR RATING -->
+  <div class="star-rating" id="starRating">
+    <span class="star" onclick="selectReviewRating(1)">★</span>
+    <span class="star" onclick="selectReviewRating(2)">★</span>
+    <span class="star" onclick="selectReviewRating(3)">★</span>
+    <span class="star" onclick="selectReviewRating(4)">★</span>
+    <span class="star" onclick="selectReviewRating(5)">★</span>
+</div>
+
+        <textarea id="reviewText" placeholder="Write your comment..."></textarea>
+
+        <button id="reviewSubmitBtn" onclick="addReview()">
+            Submit Review
+        </button>
+
+    </div>
+
+    <div id="reviewList" class="review-list"></div>
+</section>
+
+    <div id="cartMessage" class="cart-message">
+        ✔ Product added to cart
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

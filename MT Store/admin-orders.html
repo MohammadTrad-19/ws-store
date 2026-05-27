@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Orders - WS Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page" onload="loadAdminOrdersPage()">
+
+  <header class="admin-navbar">
+
+    <div class="admin-logo-box">
+      <img src="images/ws logo.png"
+           alt="WS Store Logo"
+           class="admin-logo">
+    </div>
+
+    <nav class="admin-nav-links">
+
+      <button onclick="window.location.href='admin.html'">
+        Dashboard
+      </button>
+
+      <button onclick="window.location.href='admin-products.html'">
+        Manage Products
+      </button>
+
+      <button onclick="window.location.href='admin-orders.html'">
+        View Orders
+      </button>
+
+      <button onclick="window.location.href='admin-stock.html'">
+        Stock By Size
+      </button>
+
+      <button onclick="window.location.href='admin-contact.html'">
+        Contact Messages
+      </button>
+
+      <button onclick="window.location.href='admin-reviews.html'">
+        Customer Reviews
+      </button>
+
+      <button onclick="window.location.href='admin-chatbot.html'">
+        Chatbot Messages
+      </button>
+
+      <button class="admin-nav-logout"
+              onclick="logoutAdmin()">
+        Logout
+      </button>
+
+    </nav>
+
+  </header>
+
+  <section class="admin-content-section">
+
+    <div class="orders-header">
+
+      <h1 class="admin-section-title">
+        Customer Orders
+      </h1>
+
+      <button class="export-orders-btn"
+              onclick="exportOrders()">
+        Export Orders
+      </button>
+
+    </div>
+
+    <div id="adminOrdersList"
+         class="admin-orders-grid"></div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

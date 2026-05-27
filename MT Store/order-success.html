@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success - WS Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="order-success-page">
+    <div class="order-success-card">
+        <div class="success-icon">✔</div>
+
+        <h1>Your Order Has Been Placed Successfully</h1>
+        <p class="success-subtitle">
+            Thank you for shopping with Wassim Sport Store.
+        </p>
+
+        <div class="success-info-box">
+            <p id="orderDateText">Purchase Date: </p>
+            <p>You can cancel the order within 24 hours from purchase.</p>
+        </div>
+
+        <div class="success-timer-box">
+            <p id="cancelTimer" class="cancel-timer"></p>
+            <p id="cancelStatusMessage" class="cancel-status-message"></p>
+        </div>
+
+        <div class="order-success-actions">
+            <button id="cancelOrderBtn" class="cancel-order-btn" onclick="cancelOrder()">Cancel Order</button>
+            <a href="home.html" class="back-home-btn">Back to Home</a>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

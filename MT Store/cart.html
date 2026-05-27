@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart - WS Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+<img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+<nav>
+<ul>
+<li><a href="home.html">Home</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="categories.html">Categories</a></li>
+<li><a href="home.html#about">About</a></li>
+<li><a href="home.html#contact">Contact</a></li>
+<li class="cart-icon">
+    <a href="wishlist.html">
+        ♥ <span id="wishlistCount">0</span>
+    </a>
+</li>
+<li class="cart-icon">
+    <a href="cart.html">
+        🛒 <span id="cartCount">0</span>
+    </a>
+</li>
+<li><a href="login.html">Login</a></li>
+<li><a href="register.html">Register</a></li>
+<li id="logoutItem" style="display: none;">
+    <a href="#" class="logout-link" onclick="logoutUser()" title="Logout">
+        <svg class="logout-icon" viewBox="0 0 24 24">
+            <path d="M10 17l5-5-5-5v3H3v4h7v3z"/>
+            <path d="M19 3H11a2 2 0 00-2 2v3h2V5h8v14h-8v-3H9v3a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+        </svg>
+    </a>
+</li>
+</ul>
+</nav>
+
+</header>
+
+<section class="cart-page">
+    <h1>Your Shopping Cart</h1>
+
+    <div id="cartPageItems" class="cart-items"></div>
+
+    <div class="cart-total">
+        <h2>Total: $<span id="cartTotal">0</span></h2>
+        <button class="checkout-btn" onclick="openCheckoutModal()">Checkout</button>
+    </div>
+</section>
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="checkout-modal">
+    <div class="checkout-modal-content">
+        <button class="close-modal" onclick="closeCheckoutModal()" aria-label="Close modal">&times;</button>
+
+        <div class="checkout-header">
+            <h2>Complete Your Purchase</h2>
+            <p>Please fill in your delivery and payment details</p>
+        </div>
+
+        <div class="checkout-form-grid">
+            <div class="form-group full-width">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" onchange="toggleCardFields()">
+                    <option value="">Select payment method</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                    <option value="Bank Card">Bank Card</option>
+                </select>
+            </div>
+
+          <div class="form-group">
+    <label>Phone Number </label>
+    <div class="phone-input-wrapper">
+        <span class="phone-prefix">+961</span>
+        <input type="tel" id="phone1" placeholder="70 123 456" required>
+    </div>
+    <small class="error-text" id="phone1Error"></small>
+</div>
+
+<div class="form-group">
+    <label>Another Phone Number</label>
+    <div class="phone-input-wrapper">
+        <span class="phone-prefix">+961</span>
+        <input type="tel" id="phone2" placeholder="OPTIONAL">
+    </div>
+    <small class="error-text" id="phone2Error"></small>
+</div>
+
+            <div class="form-group full-width">
+                <label for="address">Address</label>
+                <textarea id="checkoutAddress" placeholder="Enter your address"></textarea>
+            </div>
+        </div>
+
+        <!-- STRIPE CARD PAYMENT -->
+<div id="cardFields" class="card-fields" style="display: none;">
+    <div class="stripe-card-box">
+        <label>Card Payment</label>
+        <div id="payment-element"></div>
+        <div id="stripePaymentMessage" class="checkout-message"></div>
+    </div>
+</div>
+
+        <div class="checkout-actions">
+            <button type="button" class="whatsapp-location-btn" onclick="sendLocationToWhatsApp()">
+                <span>📍</span> Send Location by WhatsApp
+            </button>
+
+            <button class="confirm-purchase-btn" onclick="confirmPurchase()">
+                Confirm Purchase
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

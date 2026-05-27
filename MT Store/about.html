@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - WS Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="home.html#contact">Contact</a></li>
+                <li><a href="products.html" onclick="clearProductFilters()">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li class="cart-icon">
+                    <a href="wishlist.html">
+                        ♥ <span id="wishlistCount">0</span>
+                    </a>
+                </li>
+
+                <li class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cartCount">0</span>
+                    </a>
+                </li>
+
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+
+                <li id="logoutItem" style="display: none;">
+                    <a href="#" class="logout-link" onclick="logoutUser()" title="Logout">
+                        <svg class="logout-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 17l5-5-5-5v3H3v4h7v3z"></path>
+                            <path d="M19 3H11a2 2 0 00-2 2v3h2V5h8v14h-8v-3H9v3a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-hero-page">
+        <div class="about-hero-content">
+            <h1>About WS Store</h1>
+            <p>Your trusted destination for premium sports equipment and active lifestyle essentials.</p>
+        </div>
+    </section>
+
+    <section class="about-stats">
+    <div class="stat-box">
+        <h2 class="stat-number" data-target="5000">0</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2 class="stat-number" data-target="10000">0</h2>
+        <p>Orders Delivered</p>
+    </div>
+
+    <div class="stat-box">
+        <h2 class="stat-number" data-target="200">0</h2>
+        <p>Sports Products</p>
+    </div>
+
+    <div class="stat-box">
+        <h2 class="stat-number" data-target="20">0</h2>
+        <p>Years of Trust</p>
+    </div>
+</section>
+
+    <section class="about-page-section">
+        <div class="about-page-container">
+            <div class="about-page-text">
+                <h2>Who We Are</h2>
+                <p>
+                    WS Store was created with one purpose: to make quality sports equipment
+                    available for everyone. Whether you are a beginner, a student, or a professional athlete,
+                    we want to help you find products that improve your performance and fit your style.
+                </p>
+
+                <p>
+                    We focus on combining quality, affordability, and modern design. Our collection includes
+                    shoes, accessories, training essentials, and sports gear for different activities such as
+                    football, basketball, volleyball, tennis, running, gym, and more.
+                </p>
+            </div>
+
+            <div class="about-page-image">
+                <img src="images/about.png" alt="About WS Store">
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <h2>Why Choose WS Store?</h2>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>High Quality</h3>
+                <p>We select durable and trusted sports products made for comfort and performance.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Affordable Prices</h3>
+                <p>Our mission is to make professional sports gear accessible without high costs.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Wide Variety</h3>
+                <p>From shoes to accessories, we offer products for many sports and training needs.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Trusted Service</h3>
+                <p>We aim to provide a smooth shopping experience with helpful support and reliable delivery.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-cta">
+        <h2>Ready to Explore Our Collection?</h2>
+        <p>Find the right equipment for your sport and take your performance to the next level.</p>
+        <a href="products.html" onclick="clearProductFilters()" class="about-cta-btn">Shop Now</a>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

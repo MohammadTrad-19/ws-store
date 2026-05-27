@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products - WS Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page" onload="loadAdminProductsPage()">
+
+  <header class="admin-navbar">
+    <div class="admin-logo-box">
+      <img src="images/ws logo.png" alt="WS Store Logo" class="admin-logo">
+    </div>
+
+    <nav class="admin-nav-links">
+      <button onclick="window.location.href='admin.html'">Dashboard</button>
+
+      <button onclick="window.location.href='admin-products.html'">
+        Manage Products
+      </button>
+
+      <button onclick="window.location.href='admin-orders.html'">
+        View Orders
+      </button>
+      <button onclick="window.location.href='admin-stock.html'">Stock By Size</button>
+
+      <button onclick="window.location.href='admin-contact.html'">
+        Contact Messages
+      </button>
+
+      <button onclick="window.location.href='admin-reviews.html'">
+        Customer Reviews
+      </button>
+      <button onclick="window.location.href='admin-chatbot.html'">Chatbot Messages</button>
+
+      <button class="admin-nav-logout" onclick="logoutAdmin()">
+        Logout
+      </button>
+    </nav>
+  </header>
+
+  <section class="admin-content-section">
+
+    <h1 class="admin-section-title">Manage Products</h1>
+
+    <div class="admin-product-form-box admin-card">
+
+      <h2 id="adminProductFormTitle">Add Product</h2>
+
+      <form id="adminProductForm"
+            class="admin-product-form"
+            onsubmit="saveAdminProduct(event)">
+
+        <input type="text"
+               id="adminProductName"
+               placeholder="Product Name"
+               required>
+
+        <textarea id="adminProductDescription"
+                  placeholder="Description"
+                  required></textarea>
+
+        <input type="number"
+               id="adminProductPrice"
+               placeholder="Price"
+               step="0.01"
+               required>
+
+        <!-- UPDATED IMAGE INPUT -->
+        <input type="file"
+               id="imageFile"
+               accept="image/*">
+
+        <input type="hidden"
+               id="adminProductImage"
+               required>
+
+        <input type="text"
+               id="adminProductBrand"
+               placeholder="Brand"
+               required>
+
+        <input type="number"
+               id="adminProductQuantity"
+               placeholder="Quantity"
+               required>
+
+        <input type="number"
+               id="adminProductCategoryId"
+               placeholder="Category ID"
+               required>
+
+        <div class="admin-form-actions">
+
+          <button type="submit"
+                  class="admin-btn save-btn">
+            Save Product
+          </button>
+
+          <button type="button"
+                  class="admin-btn cancel-btn"
+                  onclick="resetAdminProductForm()">
+            Cancel
+          </button>
+
+        </div>
+
+        <p id="adminProductMessage"
+           class="admin-product-message"></p>
+
+      </form>
+
+    </div>
+
+    <div class="admin-products-list-box admin-card">
+
+      <h2>All Products</h2>
+
+      <div id="adminProductsList"
+           class="admin-products-list"></div>
+
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

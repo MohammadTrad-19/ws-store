@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" onclick="scrollToContact()">Contact</a></li>
+                <li><a href="products.html" onclick="clearProductFilters()">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li class="cart-icon">
+           <a href="wishlist.html">
+          ♥ <span id="wishlistCount">0</span>
+          </a>
+         </li>
+                <li class="cart-icon">
+          <a href="cart.html">
+            🛒 <span id="cartCount">0</span>
+           </a>
+         </li> 
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li id="logoutItem" style="display: none;">
+    <a href="#" class="logout-link" onclick="logoutUser()" title="Logout">
+        <svg class="logout-icon" viewBox="0 0 24 24">
+            <path d="M10 17l5-5-5-5v3H3v4h7v3z"/>
+            <path d="M19 3H11a2 2 0 00-2 2v3h2V5h8v14h-8v-3H9v3a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+        </svg>
+    </a>
+</li>
+    
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+   <section class="hero">
+    <div class="hero-image">
+        <img src="images/hero-sports.jpg" alt="Sports Equipment">
+    </div>
+
+    <div class="hero-content">
+        <h1>Gear Up for Your Best Performance</h1>
+        <p>
+            Discover high-quality sports shoes, kits, and equipment designed for every athlete.
+            Shop trusted brands and get everything you need in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="products.html" class="hero-btn primary-btn">Shop Now</a>
+            <a href="categories.html" class="hero-btn secondary-btn">Explore Categories</a>
+        </div>
+    </div>
+</section>
+
+    <!-- FEATURED PRODUCTS -->
+<!-- FEATURED PRODUCTS -->
+<!-- FEATURED PRODUCTS -->
+<section class="products">
+    <h2>Featured Products</h2>
+
+    <div class="featured-products-slider">
+        <div class="products-track" id="featuredProductsTrack">
+            <!-- Products will load here from database -->
+        </div>
+    </div>
+
+    <div class="see-all-wrapper">
+        <a href="products.html" onclick="clearProductFilters()" class="see-all-btn">
+            See All
+        </a>
+    </div>
+</section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="images/about.png" alt="About WS Store">
+            </div>
+
+            <div class="about-text">
+                <h2>About WS Store</h2>
+
+                <p>
+                    WS Store was founded in <b>2003</b> with a vision to provide
+                    <b>high-quality sports equipment</b> for athletes and beginners.
+                    Our goal is to make professional sports gear <b>accessible, reliable,
+                    and affordable</b> for everyone.
+                </p>
+
+                <p>
+                    We carefully select products that combine <b>durability</b>,
+                    <b>comfort</b>, and <b>modern design</b>. Our mission is to help
+                    people stay active and improve their performance in every sport.
+                </p>
+
+                <ul>
+                    <li>✔ High-quality sports equipment</li>
+                    <li>✔ Affordable prices</li>
+                    <li>✔ Modern and durable products</li>
+                    <li>✔ Trusted customer service</li>
+                </ul>
+            </div>
+            <a href="about.html" class="about-more-btn">See More</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+   <footer id="contact" class="contact-footer">
+    <div class="contact-container">
+
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+
+            <!-- ✅ ADD FORM -->
+            <form id="contactForm">
+                <input type="text" id="contactName" placeholder="Your Name" required>
+
+                <input type="email" id="contactEmail" placeholder="Your Email" required>
+
+                <textarea id="contactMessage" placeholder="Ask about a product or availability..." required></textarea>
+
+                <button type="submit">Send Message</button>
+
+                <!-- SUCCESS MESSAGE -->
+                <p id="contactSuccessMessage" class="contact-success">
+                    ✔ Your message has been sent successfully (demo mode).
+                </p>
+            </form>
+        </div>
+
+        <div class="contact-address" id="address">
+
+    <p class="location-line">
+        <i class="fa-solid fa-location-dot"></i>
+
+        <span>LEBANON, BEKAA-BARLEIS, MAIN ROAD</span>
+
+        <a
+            href="https://www.google.com/maps/search/?api=1&query=Bekaa+Bar+Elias+Main+Road+Lebanon"
+            target="_blank"
+            class="map-location-btn"
+            title="Press to open location"
+        >
+            📍
+        </a>
+    </p>
+
+    <p><i class="fa-solid fa-phone"></i> +961 70 465 429</p>
+
+    <p><i class="fa-solid fa-envelope"></i> tradmohammad20@gmail.com</p>
+
+</div>
+
+    </div>
+</footer>
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+    <!-- CHATBOT -->
+ <!-- CHATBOT -->
+<div class="chatbot-container" id="chatbotContainer">
+
+  <button class="chatbot-toggle" onclick="toggleChatbot()">
+    💬
+  </button>
+
+  <div class="chatbot-box" id="chatbotBox">
+
+    <div class="chatbot-header">
+      <div>
+        <h3>WS Store Assistant</h3>
+        <p>Ask me about products, orders, delivery, or support</p>
+      </div>
+
+      <button onclick="toggleChatbot()" class="chatbot-close">×</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+
+    <div class="chatbot-input-area">
+      <input 
+        type="text" 
+        id="chatbotInput" 
+        placeholder="Type your question..."
+        onkeydown="handleChatbotEnter(event)"
+      >
+      <button onclick="sendChatbotMessage()">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

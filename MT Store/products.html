@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - WS Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="home.html#about">About</a></li>
+                <li><a href="home.html#contact">Contact</a></li>
+                <li><a href="products.html" onclick="clearProductFilters()">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li class="cart-icon">
+                    <a href="wishlist.html">
+                        ♥ <span id="wishlistCount">0</span>
+                    </a>
+                </li>
+                <li class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cartCount">0</span>
+                    </a>
+                </li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li id="logoutItem" style="display: none;">
+    <a href="#" class="logout-link" onclick="logoutUser()" title="Logout">
+        <svg class="logout-icon" viewBox="0 0 24 24">
+            <path d="M10 17l5-5-5-5v3H3v4h7v3z"/>
+            <path d="M19 3H11a2 2 0 00-2 2v3h2V5h8v14h-8v-3H9v3a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+        </svg>
+    </a>
+</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products-page">
+        <h1 id="productsPageTitle">Our Products</h1>
+
+        <div class="products-controls">
+            <div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Search for a product..." onkeyup="searchProducts(); showSearchSuggestions()">
+    <div id="searchSuggestions" class="search-suggestions"></div>
+</div>
+
+            <select id="sortOption" onchange="sortProducts()">
+                <option value="">Sort By</option>
+                <option value="default">Default Order</option>
+                <option value="priceLowHigh">Price: Low to High</option>
+                <option value="priceHighLow">Price: High to Low</option>
+                <option value="nameAZ">Name: A to Z</option>
+                <option value="nameZA">Name: Z to A</option>
+            </select>
+        </div>
+
+        <div class="product-grid" id="productList"></div>
+    </section>
+
+    <div id="cartMessage" class="cart-message">✔ Product added to cart</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

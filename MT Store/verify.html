@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Account - WS Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="images/ws logo.png" class="logo" alt="WS Store Logo">
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="home.html#about">About</a></li>
+                <li><a href="home.html#contact">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="verify-section">
+        <div class="verify-box">
+            <h2>Verify Your Email</h2>
+            <p class="verify-text">
+                We sent a verification code to your email. Enter the code below to activate your account.
+            </p>
+
+            <form id="verifyForm">
+    <label for="verifyEmail">Email</label>
+    <input type="email" id="verifyEmail" readonly>
+
+    <label for="verifyCode">Verification Code</label>
+    <input type="text" id="verifyCode" placeholder="Enter verification code" required>
+
+    <button type="submit">Verify Account</button>
+
+    <button 
+        type="button"
+        id="resendCodeBtn"
+        onclick="resendVerificationCode()"
+        disabled>
+        Resend Code (60s)
+    </button>
+</form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
