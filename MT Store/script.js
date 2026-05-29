@@ -5389,3 +5389,121 @@ async function loadAdminChatbotMessages() {
 function exportOrders() {
     window.location.href = "http://localhost:5000/api/admin/export-orders";
 }
+/* =========================
+   ADMIN USERS PAGE
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.body.classList.contains("admin-users-page")) {
+        loadAdminUsers();
+    }
+});
+
+async function loadAdminUsers() {
+    const tbody = document.getElementById("adminUsersBody");
+
+    if (!tbody) return;
+
+    try {
+        const response = await fetch("http://localhost:5000/api/admin/users");
+        const users = await response.json();
+
+        tbody.innerHTML = "";
+
+        users.forEach(user => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${user.fullname}</td>
+                <td>${user.email}</td>
+                <td>
+                    ${
+                        user.role === "Admin"
+                            ? `<span class="role-admin">Admin</span>`
+                            : `<span class="role-customer">Customer</span>`
+                    }
+                </td>
+                <td>
+                    ${
+                       user.role === "Admin"
+                        ? `<button class="remove-admin-btn" onclick="removeAdmin('${user.email}')">Remove Admin</button>`
+                        : `<button class="promote-btn" onclick="promoteUser(${user.id})">Make Admin</button>`
+                    }
+                </td>
+            `;
+
+            tbody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("Error loading users:", error);
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4">Failed to load users.</td>
+            </tr>
+        `;
+    }
+}
+
+async function promoteUser(userId) {
+    const confirmPromote = confirm(
+        "Are you sure you want to make this user an admin?"
+    );
+
+    if (!confirmPromote) return;
+
+    try {
+        const response = await fetch(
+            `http://localhost:5000/api/admin/users/promote/${userId}`,
+            {
+                method: "POST"
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Failed to promote user");
+            return;
+        }
+
+        alert(data.message);
+
+        loadAdminUsers();
+
+    } catch (error) {
+        console.error("Error promoting user:", error);
+        alert("Server error");
+    }
+}
+async function removeAdmin(email) {
+
+    const confirmed = confirm(
+        "Are you sure you want to remove admin privileges?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:5000/api/admin/users/remove-admin/${email}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        if (response.ok) {
+            loadAdminUsers();
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Server error");
+    }
+}

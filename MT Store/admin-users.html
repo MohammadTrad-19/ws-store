@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Users</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-users-page">
+
+    <!-- ADMIN HEADER -->
+    <div class="admin-header">
+        <h1>Users Management</h1>
+
+        <div class="admin-actions">
+            <button class="back-btn" onclick="window.location.href='admin.html'">
+                Dashboard
+            </button>
+        </div>
+        
+    </div>
+
+    <!-- USERS CONTAINER -->
+    <div class="admin-users-container">
+
+        <table class="admin-users-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="adminUsersBody">
+                <tr>
+                    <td colspan="4">Loading users...</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
