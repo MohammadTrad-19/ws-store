@@ -2908,6 +2908,118 @@ app.get("/api/admin/export-orders", async (req, res) => {
         });
     }
 });
+// Get all customers and admins
+app.get("/api/admin/users", async (req, res) => {
+  try {
+    const [admins] = await db.promise().query(`
+      SELECT 
+        id,
+        fullname,
+        email,
+        'Admin' AS role
+      FROM admins
+      ORDER BY created_at DESC
+    `);
+
+    const [customers] = await db.promise().query(`
+      SELECT 
+        id,
+        fullname,
+        email,
+        'Customer' AS role
+      FROM customers
+      ORDER BY created_at DESC
+    `);
+
+    res.json([...admins, ...customers]);
+  } catch (err) {
+    console.error("Error loading users:", err);
+    res.status(500).json({ message: "Failed to load users" });
+  }
+});
+
+
+// Promote customer to admin
+app.post("/api/admin/users/promote/:id", async (req, res) => {
+  try {
+    const customerId = req.params.id;
+
+    const [customers] = await db.promise().query(
+      `
+      SELECT fullname, email, password
+      FROM customers
+      WHERE id = ?
+      `,
+      [customerId]
+    );
+
+    if (customers.length === 0) {
+      return res.status(404).json({ message: "Customer not found" });
+    }
+
+    const customer = customers[0];
+
+    const [existingAdmin] = await db.promise().query(
+      `
+      SELECT id
+      FROM admins
+      WHERE email = ?
+      `,
+      [customer.email]
+    );
+
+    if (existingAdmin.length > 0) {
+      return res.status(400).json({ message: "This user is already an admin" });
+    }
+
+    await db.promise().query(
+      `
+      INSERT INTO admins (fullname, email, password)
+      VALUES (?, ?, ?)
+      `,
+      [customer.fullname, customer.email, customer.password]
+    );
+
+    res.json({ message: "User promoted to admin successfully" });
+  } catch (err) {
+    console.error("Error promoting user:", err);
+    res.status(500).json({ message: "Failed to promote user" });
+  }
+});
+// Remove admin
+app.delete("/api/admin/users/remove-admin/:email", async (req, res) => {
+  try {
+    const email = req.params.email;
+
+    // Prevent removing the main admin
+    if (email === "tradmohammad20@gmail.com") {
+      return res.status(400).json({
+        message: "Main admin cannot be removed"
+      });
+    }
+
+    const [result] = await db.promise().query(
+      "DELETE FROM admins WHERE email = ?",
+      [email]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        message: "Admin not found"
+      });
+    }
+
+    res.json({
+      message: "Admin removed successfully"
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Server error"
+    });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log("✅ Connected to MySQL database");
